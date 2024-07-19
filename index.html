@@ -6,41 +6,32 @@
     <title>Benjamin Ward - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <!-- <div class="header-content">
-            <div class="logo">
-                <img src="123123.jpeg" alt="Logo" class="logo-img">
-            </div> -->
         <h1>Benjamin C. Ward</h1>
         <nav>
             <ul>
-                <li><u><a href="#about"><u>About</u></a></u></li>
-                <li><u><a href="#projects"><u>Projects</u></a></u></li>
-                <li><u><a href="#resume"><u>Resume</u></a></u></li>
-                <li><u><a href="#contact"><u>Contact</u></a></u></li>
+                <li><a href="#about" class="underline">About Me</a></li>
+                <li><a href="#projects" class="underline">Projects</a></li>
+                <li><a href="#resume" class="underline">Resume</a></li>
+                <li><a href="#contact" class="underline">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="about">
-            <h2><u>About Me</u></h2>
+            <h2 class="underline">About Me</h2>
             <img src="IMG_3924.JPG" alt="Benjamin Ward" class="profile-image">
             <p>I am currently a Junior at Kent State University at Stark, pursuing a B.A. in Computer Science. As a recipient of the Choose Ohio First Computer Science Scholarship, I'm dedicated to preparing for a career in this field.</p>
             <p>Collaboration fuels my passion—I see every interaction as an opportunity to learn and grow. My extensive volunteering experience with non-profits has shaped my approach to academic and professional challenges. Whether mastering a programming language or exploring emerging tech trends, I'm always seeking new knowledge.</p>
-            <p>My strengths include clear communication, active listening, and a customer-centric mindset. These skills, combined with my technical acumen and social consciousness, allow me to bridge complex technological solutions with real-world needs.</p>
+            <p>My goal is to utilize my strengths in clear communication, active listening, and a customer-centric mindset. By combining these skills with my technical acumen and social consciousness, I aim to bridge complex technological solutions with real-world needs.</p>
             <p>I'm excited to connect with professionals and organizations where I can apply my collaborative spirit, love for learning, and technical skills to make a meaningful impact in the dynamic world of technology.</p>
         </section>
     
         <section id="projects">
-            <h2><u>Projects</u></h2>
+            <h2 class="underline">Projects</h2>
             <div class="project">
                 <h3>Investigating Stress-Induced Driving Behaviors: A Psychophysiological Analysis using Wearable Sensors</h3>
                 <p>Wearable devices are essential for gathering psychophysiological data, especially in stress-induced driving scenarios. Our study, using the Empatica E4 device, focuses on wristband sensors to understand how specific driving conditions induce stress. Stress while driving can lead to negative emotions and unsafe behaviors, contributing to accidents. The research correlates vulnerability factors to stress, utilizing a validated questionnaire and assessing participants' performance in a driving simulator and virtual reality. Ten subjects participated in three experimental conditions: Low-Risk Driving, Medium-Risk Driving, and High-Risk Driving, providing insights into the relationship between driving conditions and stress.</p>
@@ -49,20 +40,20 @@
         </section>
     
         <section id="resume">
-            <h2><u>Resume</u></h2>
+            <h2 class="underline">Resume</h2>
             <p>
-                <a href="Resume.pdf" download class="pdf-download">Download PDF</a>
+                <a href="Resume.pdf" download class="pdf-download">Download Resume</a>
             </p>
         </section>
     
         <section id="contact">
-            <h2><u>Contact</u></h2>
+            <h2 class="underline">Contact</h2>
             <p>Email: <a href="mailto:benjamincward9@gmail.com">benjamincward9@gmail.com</a></p>
             <p>Phone: <a href="tel:+13304403605">(330) 440-3605</a></p>
         </section>
     
         <section id="socials">
-            <h2><u>Feel free to connect with me!</u></h2>
+            <h2 class="underline">Feel free to connect with me!</h2>
             <ul class="social-links">
                 <li>
                     <a href="https://www.linkedin.com/in/benjamin-ward9/" target="_blank">
@@ -78,8 +69,10 @@
         </section>
     </main>
 
+    <button id="backToTop" title="Back to Top">↑</button>
+
     <footer>
-        <p>&copy; 2024 Benjamin C. Ward. All rights reserved.</p>
+        <p id="typing-effect">&copy; 2024 Benjamin C. Ward. <span id="innovation-text"></span></p>
     </footer>
 
     <script>
@@ -89,10 +82,8 @@
         links.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
-
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
@@ -101,6 +92,46 @@
                 }
             });
         });
+
+        function typeEffect(element, text, speed = 100) {
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        element.innerHTML = '';
+                        typeEffect(element, text, speed);
+                    }, 2000);
+                }
+            }, speed);
+        }
+
+        const innovationElement = document.getElementById('innovation-text');
+        typeEffect(innovationElement, "Let's innovate.");
+
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", scrollFunction);
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        }
+
+        backToTopButton.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollFunction();
     });
     </script>
 </body>
