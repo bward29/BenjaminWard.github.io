@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjamin Ward - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
     <header>
         <!-- <div class="header-content">
             <div class="logo">
-                <img src="123123.jpeg" alt="Logo" class="logo-img"> -->
-            </div>
-            <h1>Benjamin C. Ward</h1>
-        </div>
+                <img src="123123.jpeg" alt="Logo" class="logo-img">
+            </div> -->
+        <h1>Benjamin C. Ward</h1>
         <nav>
             <ul>
-                    <li><u><a href="#about"><u>About</u></a></u></li>
-                    <li><u><a href="#projects"><u>Projects</u></a></u></li>
-                    <li><u><a href="#resume"><u>Resume</u></a></u></li>
-                    <li><u><a href="#contact"><u>Contact</u></a></u></li>
-                </ul>
-                
-
+                <li><u><a href="#about"><u>About</u></a></u></li>
+                <li><u><a href="#projects"><u>Projects</u></a></u></li>
+                <li><u><a href="#resume"><u>Resume</u></a></u></li>
+                <li><u><a href="#contact"><u>Contact</u></a></u></li>
             </ul>
         </nav>
     </header>
@@ -80,5 +81,27 @@
     <footer>
         <p>&copy; 2024 Benjamin C. Ward. All rights reserved.</p>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('nav a[href^="#"]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
