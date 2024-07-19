@@ -45,6 +45,7 @@ main {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+    padding-bottom: 3rem; /* Add padding to accommodate footer */
 }
 
 section {
@@ -129,10 +130,11 @@ footer {
     background: #2c3e50;
     color: #ecf0f1;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
     position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 0.9em;
 }
 
 /* Back to Top Button */
@@ -172,6 +174,7 @@ footer {
 
     main {
         padding: 1rem;
+        padding-bottom: 3rem; /* Add padding to accommodate footer */
     }
 
     .profile-image {
