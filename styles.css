@@ -76,11 +76,10 @@ h1, h2, h3 {
 
 /* Project Styles */
 .project {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    border-bottom: 3px solid #2c3e50; /* Increased thickness and changed color */
+    padding-bottom: 2rem; /* Increased padding for more space */
+    margin-bottom: 2rem; /* Increased margin for more separation */
 }
-
 .project:last-child {
     border-bottom: none;
 }
@@ -192,6 +191,13 @@ footer {
     }
 }
 
+/* Project Images */
+.project img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
 html {
     scroll-behavior: smooth;
 }
