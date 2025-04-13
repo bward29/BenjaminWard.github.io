@@ -6,6 +6,26 @@ body {
     padding: 0;
     color: #333;
     background-color: #f4f4f4;
+    /* Fixed text-size-adjust with all required prefixes */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Disable hyphenation to prevent words from being incorrectly split */
+p {
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
 }
 
 header {
@@ -45,7 +65,8 @@ main {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    padding-bottom: 3rem; /* Add padding to accommodate footer */
+    padding-bottom: 3rem;
+    /* Add padding to accommodate footer */
 }
 
 section {
@@ -53,10 +74,12 @@ section {
     margin-bottom: 2rem;
     padding: 2rem;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #2c3e50;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -76,15 +99,20 @@ h1, h2, h3 {
 
 /* Project Styles */
 .project {
-    border-bottom: 3px solid #2c3e50; /* Increased thickness and changed color */
-    padding-bottom: 2rem; /* Increased padding for more space */
-    margin-bottom: 2rem; /* Increased margin for more separation */
+    border-bottom: 3px solid #2c3e50;
+    /* Increased thickness and changed color */
+    padding-bottom: 2rem;
+    /* Increased padding for more space */
+    margin-bottom: 2rem;
+    /* Increased margin for more separation */
 }
+
 .project:last-child {
     border-bottom: none;
 }
 
-.project-link, .pdf-download {
+.project-link,
+.pdf-download {
     display: inline-block;
     background-color: #3498db;
     color: white;
@@ -96,7 +124,8 @@ h1, h2, h3 {
     margin-right: 10px;
 }
 
-.project-link:hover, .pdf-download:hover {
+.project-link:hover,
+.pdf-download:hover {
     background-color: #2980b9;
 }
 
@@ -165,6 +194,14 @@ footer {
     opacity: 1;
 }
 
+/* Project Images */
+.project img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     nav ul li {
@@ -174,7 +211,8 @@ footer {
 
     main {
         padding: 1rem;
-        padding-bottom: 3rem; /* Add padding to accommodate footer */
+        padding-bottom: 3rem;
+        /* Add padding to accommodate footer */
     }
 
     .profile-image {
@@ -191,13 +229,34 @@ footer {
     }
 }
 
-/* Project Images */
-.project img {
-    max-width: 50%;
-    height: auto;
-    display: block;
-    margin: 1rem auto;
+/* iOS Safari fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        /* Fix for iOS Safari 100vh issue */
+        min-height: -webkit-fill-available;
+    }
+
+    html {
+        height: -webkit-fill-available;
+    }
 }
-html {
-    scroll-behavior: smooth;
+
+/* Fix for IE/Edge */
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+    .project img {
+        width: 50%;
+    }
+
+    footer {
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* Better font rendering in Firefox */
+@-moz-document url-prefix() {
+    body {
+        text-rendering: optimizeLegibility;
+    }
 }
